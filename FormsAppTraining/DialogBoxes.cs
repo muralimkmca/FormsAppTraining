@@ -48,5 +48,22 @@ namespace FormsAppTraining
             }
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //Font Dialog
+            FontDialog fdlg = new FontDialog();
+            fdlg.ShowDialog();
+            textBox1.Font = fdlg.Font;
+            
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //Color Dialog
+            var cdlg = new ColorDialog();
+            cdlg.ShowDialog();
+            textBox1.ForeColor = cdlg.Color;
+        }
     }
 }

@@ -23,7 +23,6 @@ namespace FormsAppTraining
         {
             string ConString = ConfigurationManager.AppSettings["ConnectionString"];
             string Query = "SELECT * FROM tblProduct";
-
             SqlDataAdapter adapter = new SqlDataAdapter(Query, ConString);
             DataSet dset = new DataSet();
             adapter.Fill(dset, "tblProduct");
@@ -50,8 +49,7 @@ namespace FormsAppTraining
             DataSet set = new DataSet();
             adapter.Fill(set, "tblProduct");
 
-            set.Tables["tblProduct"].Rows.Find(2).Delete();
-            
+            set.Tables["tblProduct"].Rows[2].Delete();            
 
             SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
             adapter.Update(set.Tables["tblProduct"]);
@@ -63,16 +61,14 @@ namespace FormsAppTraining
         {
             string ConString = ConfigurationManager.AppSettings["ConnectionString"];
             string Query = "SELECT * FROM tblProduct";
-            //string Query = "Update tblProduct set ProductName=\"Boost\" where Id=4 ";
             SqlDataAdapter adapter = new SqlDataAdapter(Query, ConString);
             DataSet set = new DataSet();
             adapter.Fill(set, "tblProduct");
 
-            set.Tables["tblProduct"].Rows[4]["ProductName"] = "Boost";
+            set.Tables["tblProduct"].Rows[2]["ProductName"] = "Boost";
 
             SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
             adapter.Update(set.Tables["tblProduct"]);
-
             dgvDataset.DataSource = set.Tables["tblProduct"];
 
         }
