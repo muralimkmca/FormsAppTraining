@@ -26,8 +26,16 @@ namespace FormsAppTraining
 
             SqlDataAdapter adapter = new SqlDataAdapter(Query, ConString);
             DataSet dset = new DataSet();
-
             adapter.Fill(dset, "tblProduct");
+
+            DataRow row = dset.Tables["tblProduct"].NewRow();
+            row["Id"] = 3;
+            row["ProductName"] = "Powder";
+            row["ProductPrice"] = "100";
+            row["Datetime"] = "2022-02-01";
+
+            dset.Tables["tblProduct"].Rows.Add(row);
+
             dgvDataset.DataSource = dset.Tables["tblProduct"];
         }
 

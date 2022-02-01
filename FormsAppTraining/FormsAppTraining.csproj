@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TextBoxOperations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextBoxOperations.Designer.cs">
+      <DependentUpon>TextBoxOperations.cs</DependentUpon>
+    </Compile>
     <Compile Include="SampleDataSet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="TextBoxOperations.resx">
+      <DependentUpon>TextBoxOperations.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SampleDataSet.resx">
       <DependentUpon>SampleDataSet.cs</DependentUpon>
     </EmbeddedResource>
