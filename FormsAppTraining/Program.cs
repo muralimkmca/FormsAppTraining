@@ -16,7 +16,7 @@ namespace FormsAppTraining
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SampleDataSet());
+            Application.Run(new MultipleDocInterface());
         }
     }
 }

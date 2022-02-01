@@ -35,6 +35,9 @@ namespace FormsAppTraining
             row["Datetime"] = "2022-02-01";
 
             dset.Tables["tblProduct"].Rows.Add(row);
+            
+            SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+            adapter.Update(dset.Tables["tblProduct"]);
 
             dgvDataset.DataSource = dset.Tables["tblProduct"];
         }
@@ -47,7 +50,11 @@ namespace FormsAppTraining
             DataSet set = new DataSet();
             adapter.Fill(set, "tblProduct");
 
-            set.Tables["tblProduct"].Rows[1].Delete();
+            set.Tables["tblProduct"].Rows.Find(2).Delete();
+            
+
+            SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+            adapter.Update(set.Tables["tblProduct"]);
 
             dgvDataset.DataSource = set.Tables["tblProduct"];
         }
@@ -56,16 +63,23 @@ namespace FormsAppTraining
         {
             string ConString = ConfigurationManager.AppSettings["ConnectionString"];
             string Query = "SELECT * FROM tblProduct";
+            //string Query = "Update tblProduct set ProductName=\"Boost\" where Id=4 ";
             SqlDataAdapter adapter = new SqlDataAdapter(Query, ConString);
             DataSet set = new DataSet();
-            adapter.Fill(set, "tblProduct");           
+            adapter.Fill(set, "tblProduct");
+
+            set.Tables["tblProduct"].Rows[4]["ProductName"] = "Boost";
+
+            SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+            adapter.Update(set.Tables["tblProduct"]);
 
             dgvDataset.DataSource = set.Tables["tblProduct"];
-            
+
         }
 
         private void btnGet_Click(object sender, EventArgs e)
-        {
+        {           
+
             string ConString = ConfigurationManager.AppSettings["ConnectionString"];
             string Query = "SELECT * FROM tblProduct";
 
